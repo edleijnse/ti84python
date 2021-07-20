@@ -1,4 +1,7 @@
-from ti_system import *
+try:
+  from ti_system import *
+except Exception as e:
+    print ("no module ti_system")
 def euro2chf(initeuro):
   print("")
   try:
@@ -16,19 +19,35 @@ def euro2chf(initeuro):
   print ("CHF: " + '{:.2f}'.format(chf))
   return neweuro
 
+def getEuroFromFile():
+    try:
+       file1 = open("eurostore.txt","r")
+       storedeuro = file1.read()
+       file1.close()
+    except Exception as e:
+       storedeuro = .95
+    return storedeuro
 def geteuro():
     try:
         xlist=recall_list("1")
         storedeuro = float(xlist[0])
+    except NameError as e:
+        storedeuro=getEuroFromFile()
     except Exception as e:
         storedeuro = .83
-        saveeuro(storedeuro)
+    saveeuro(storedeuro)
     return storedeuro
-
+def saveEuroToFile(iEuro):
+    file1 = open("eurostore.txt","w")
+    file1.write(str(iEuro))
+    file1.close()
 def saveeuro(ieuro):
     xlist=[]
     xlist.append(ieuro)
-    store_list("1",xlist)
+    try:
+       store_list("1",xlist)
+    except NameError as e:
+       saveEuroToFile(ieuro)
     return
 
 initeuro=geteuro()
