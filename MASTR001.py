@@ -18,6 +18,8 @@ def checkinput(iNumber):
 # random number within the specified range.
 nok = True
 while (nok):
+    # to be rewritten for TI-84
+    # https://www.w3schools.com/python/ref_random_randrange.asp
     num = random.randrange(1000, 10000)
     if checkinput(num) == True:
         nok = False

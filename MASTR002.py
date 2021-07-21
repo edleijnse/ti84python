@@ -1,17 +1,22 @@
 # https://www.askpython.com/python/examples/create-mastermind-game-in-python
 try:
-  from ti_system import *
+    from ti_system import *
 except Exception as e:
-    print ("no module ti_system")
+    print("no module ti_system")
 
 import random
+
 try:
-  from os import system
+    from os import system
 except Exception as e:
-    print ("no module os")
+    print("no module os")
+
 
 def clear():
-    system("cls")
+    try:
+        system("cls")
+    except NameError:
+        print("system not defined")
 
 
 # Function to print the mastermind board
@@ -25,7 +30,11 @@ def print_mastermind_board(passcode, guess_codes, guess_flags):
         print("\t" + x[:3], end="")
     print()
 
-    for i in reversed(range(len(guess_codes))):
+    # for i in reversed(range(len(guess_codes))):
+    maxi = len(guess_codes)
+    i = maxi
+    while i > 0:
+        i = i-1
         print("-----------------------------------------")
         print(guess_flags[i][0], guess_flags[i][1], "|")
 
@@ -36,8 +45,9 @@ def print_mastermind_board(passcode, guess_codes, guess_flags):
         print()
     print("-----------------------------------------")
 
+
 # The Main function
-#if __name__ == '__main__':
+# if __name__ == '__main__':
 
 # List of colors
 colors = ["RED", "GREEN", "YELLOW", "BLUE", "BLACK", "ORANGE"]
@@ -46,9 +56,20 @@ colors = ["RED", "GREEN", "YELLOW", "BLUE", "BLACK", "ORANGE"]
 colors_map = {1: "RED", 2: "GREEN", 3: "YELLOW", 4: "BLUE", 5: "BLACK", 6: "ORANGE"}
 
 # Randomly selecting a passcode
-random.shuffle(colors)
-passcode = colors[:4]
-
+# to be rewritten for TI-84
+# https://www.w3schools.com/python/ref_random_randrange.asp
+# random.shuffle(colors)
+col1 = random.randrange(1, 6)
+col2 = random.randrange(1, 6)
+col3 = random.randrange(1, 6)
+col4 = random.randrange(1, 6)
+# passcode = colors[:4]
+passcode = []
+passcode.clear()
+passcode.append(colors[col1])
+passcode.append(colors[col2])
+passcode.append(colors[col3])
+passcode.append(colors[col4])
 
 # Number of chances for the player
 chances = 8
