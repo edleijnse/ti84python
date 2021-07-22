@@ -23,6 +23,7 @@ def clear():
 def print_mastermind_board(passcode, guess_codes, guess_flags):
     print(dottedline)
     print(" MASTERMIND")
+    print(passcode)
     print(dottedline)
 
     # print("    |", end="")
@@ -50,10 +51,10 @@ def print_mastermind_board(passcode, guess_codes, guess_flags):
 # if __name__ == '__main__':
 
 # List of colors
-colors = ["1RD", "2GR", "3YE", "4BE", "5BK", "6OR"]
+colors = ["1RED", "2GREEN", "3YELLOW", "4BLUE", "5BLACK", "6ORANGE"]
 
 # Mapping of colors to numbers
-colors_map = {1: "1RD", 2: "2GR", 3: "3YE", 4: "4BE", 5: "5BK", 6: "6OR"}
+colors_map = {1: "1RED", 2: "2GREEN", 3: "3YELLOW", 4: "4BLUE", 5: "5BLACK", 6: "6ORANGE"}
 
 # Randomly selecting a passcode
 # to be rewritten for TI-84
@@ -144,7 +145,7 @@ while turn < chances:
             pos += 1
             dummy_passcode.remove(colors_map[x])
 
-    # random.shuffle(guess_flags[turn])
+    #random.shuffle(guess_flags[turn])
 
     # Check for win condition
     if guess_codes[turn] == passcode:
