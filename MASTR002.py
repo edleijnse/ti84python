@@ -25,10 +25,10 @@ def print_mastermind_board(passcode, guess_codes, guess_flags):
     print(" MASTERMIND")
     print(dottedline)
 
-    print("    |", end="")
-    for x in passcode:
-        print("\t" + x[:3], end="")
-    print()
+    # print("    |", end="")
+    # for x in passcode:
+    #    print("\t" + x[:3], end="")
+    # print()
 
     # for i in reversed(range(len(guess_codes))):
     maxi = len(guess_codes)
@@ -50,10 +50,10 @@ def print_mastermind_board(passcode, guess_codes, guess_flags):
 # if __name__ == '__main__':
 
 # List of colors
-colors = ["RED", "GREEN", "YELLOW", "BLUE", "BLACK", "ORANGE"]
+colors = ["1RD", "2GR", "3YE", "4BE", "5BK", "6OR"]
 
 # Mapping of colors to numbers
-colors_map = {1: "RED", 2: "GREEN", 3: "YELLOW", 4: "BLUE", 5: "BLACK", 6: "ORANGE"}
+colors_map = {1: "1RD", 2: "2GR", 3: "3YE", 4: "4BE", 5: "5BK", 6: "6OR"}
 
 # Randomly selecting a passcode
 # to be rewritten for TI-84
@@ -102,7 +102,7 @@ while turn < chances:
 
     # Accepting the player input
     try:
-        code = list(map(int, input("Enter your choice = ").split()))
+        code = list(map(int, input("Enter choice (.) = ").split(".")))
     except ValueError:
         clear()
         print("\tWrong choice!! Try again!!")
@@ -150,7 +150,7 @@ while turn < chances:
     if guess_codes[turn] == passcode:
         clear()
         print_mastermind_board(passcode, guess_codes, guess_flags)
-        print("Congratulations!! YOU WIN!!!!")
+        print("YOU WIN!!!!")
         break
 
     # Update turn
@@ -161,4 +161,4 @@ while turn < chances:
 if turn == chances:
     clear()
     print_mastermind_board(passcode, guess_codes, guess_flags)
-    print("YOU LOSE!!! Better luck next time!!!")
+    print("YOU LOSE!!!")
