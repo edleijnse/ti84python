@@ -11,19 +11,19 @@ try:
 except Exception as e:
     print("no module os")
 
-
+dottedline="------------------------"
 def clear():
     try:
         system("cls")
     except NameError:
-        print("system not defined")
+        print("======")
 
 
 # Function to print the mastermind board
 def print_mastermind_board(passcode, guess_codes, guess_flags):
-    print("-----------------------------------------")
-    print("\t      MASTERMIND")
-    print("-----------------------------------------")
+    print(dottedline)
+    print(" MASTERMIND")
+    print(dottedline)
 
     print("    |", end="")
     for x in passcode:
@@ -35,7 +35,7 @@ def print_mastermind_board(passcode, guess_codes, guess_flags):
     i = maxi
     while i > 0:
         i = i-1
-        print("-----------------------------------------")
+        print(dottedline)
         print(guess_flags[i][0], guess_flags[i][1], "|")
 
         print(guess_flags[i][2], guess_flags[i][3], end=" |")
@@ -43,7 +43,7 @@ def print_mastermind_board(passcode, guess_codes, guess_flags):
             print("\t" + x[:3], end="")
 
         print()
-    print("-----------------------------------------")
+    print(dottedline)
 
 
 # The Main function
@@ -91,13 +91,13 @@ turn = 0
 # The GAME LOOP
 while turn < chances:
 
-    print("-----------------------------------------")
+    print(dottedline)
     print("\t\tMenu")
-    print("-----------------------------------------")
+    print(dottedline)
     print("Enter code using numbers.")
     print("1 - RED, 2 - GREEN, 3 - YELLOW, 4 - BLUE, 5 - BLACK, 6 - ORANGE")
     print("Example: RED YELLOW ORANGE BLACK ---> 1 3 6 5")
-    print("-----------------------------------------")
+    print(dottedline)
     print_mastermind_board(show_passcode, guess_codes, guess_flags)
 
     # Accepting the player input
@@ -144,7 +144,7 @@ while turn < chances:
             pos += 1
             dummy_passcode.remove(colors_map[x])
 
-    random.shuffle(guess_flags[turn])
+    # random.shuffle(guess_flags[turn])
 
     # Check for win condition
     if guess_codes[turn] == passcode:
