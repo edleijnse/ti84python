@@ -99,7 +99,7 @@ while turn < chances:
     print("1 - RED, 2 - GREEN, 3 - YELLOW, 4 - BLUE, 5 - BLACK, 6 - ORANGE")
     print("Example: RED YELLOW ORANGE BLACK ---> 1 3 6 5")
     print(dottedline)
-    print_mastermind_board(show_passcode, guess_codes, guess_flags)
+    print_mastermind_board(passcode, guess_codes, guess_flags)
 
     # Accepting the player input
     try:
@@ -148,7 +148,8 @@ while turn < chances:
     #random.shuffle(guess_flags[turn])
 
     # Check for win condition
-    if guess_codes[turn] == passcode:
+    if len(dummy_passcode)==0:
+    #if guess_codes[turn] == passcode:
         clear()
         print_mastermind_board(passcode, guess_codes, guess_flags)
         print("YOU WIN!!!!")
