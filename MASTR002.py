@@ -11,7 +11,7 @@ try:
 except Exception as e:
     print("no module os")
 
-dottedline="------------------------"
+dottedline="--------------------------"
 def clear():
     try:
         system("cls")
@@ -35,10 +35,10 @@ def print_mastermind_board(passcode, guess_codes, guess_flags):
     i = maxi
     while i > 0:
         i = i-1
-        print(dottedline)
-        print(guess_flags[i][0], guess_flags[i][1], "|")
+        # print(dottedline)
+        print(guess_flags[i][0], guess_flags[i][1], guess_flags[i][2], guess_flags[i][3], end=" |")
 
-        print(guess_flags[i][2], guess_flags[i][3], end=" |")
+        # print(guess_flags[i][2], guess_flags[i][3], end=" |")
         for x in guess_codes[i]:
             print("\t" + x[:3], end="")
 
