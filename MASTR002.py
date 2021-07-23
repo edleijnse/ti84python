@@ -48,21 +48,24 @@ def print_mastermind_board(passcode, guess_codes, guess_flags):
         print()
     print(dottedline)
 
-
 # Function to set the guess_flags
-def setGuessflags(guess_flags, turn, code, colors_map, passcode):
-    dummy_passcode = [x for x in passcode]
-    pos = 0
+def setGuessflags(guess_flags, turn, code, passcode):
+    ii = 0
     for x in code:
-        if colors_map[x] in dummy_passcode:
-            if code.index(x) == passcode.index(colors_map[x]):
-                guess_flags[turn][pos] = 'R'
-            else:
-                guess_flags[turn][pos] = 'W'
-            pos += 1
-            dummy_passcode.remove(colors_map[x])
+        if (ii==turn):
+           cc=0
+           for codeitem in x:
+               pp=0
+               for passcodeitem in passcode:
+                 if (str(codeitem)==str(passcodeitem)):
+                    if cc==pp:
+                       guess_flags[turn][pp] = 'R'
+                    else:
+                       guess_flags[turn][pp] = 'W'
+                 pp +=1
+               cc +=1
+        ii +=1
     return guess_flags
-
 
 # The Main function
 # if __name__ == '__main__':
@@ -149,7 +152,7 @@ while turn < chances:
 
         # Process to apply clues according to the player input
 
-    guess_flags = setGuessflags(guess_flags, turn, code, colors_map, passcode)
+    guess_flags = setGuessflags(guess_flags, turn, guess_codes, passcode)
     # dummy_passcode = [x for x in passcode]
     #
     # pos = 0
