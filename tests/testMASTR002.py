@@ -53,7 +53,7 @@ class Mastr002TestCase(unittest.TestCase):
         guess_flags = [['-', '-', '-', '-'] for x in range(chances)]
         guess_codes = [['1', '1', '2', '2'] for x in range(chances)]
         newguessflags = setGuessflags(guess_flags,turn,guess_codes,passcode)
-        self.assertEqual(['-', '-', 'W', 'R'], guess_flags[1])
+        self.assertEqual(['-', '-', 'W', 'W'], guess_flags[1])
 
 
 if __name__ == '__main__':

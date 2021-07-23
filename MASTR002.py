@@ -6,11 +6,6 @@ except Exception as e:
 
 import random
 
-try:
-    from os import system
-except Exception as e:
-    print("no module os")
-
 dottedline = "--------------------------"
 
 
@@ -162,22 +157,7 @@ while turn < chances:
         # Process to apply clues according to the player input
 
     guess_flags = setGuessflags(guess_flags, turn, guess_codes, passcode)
-    # dummy_passcode = [x for x in passcode]
-    #
-    # pos = 0
-    #
-    #
-    # # Loop to set up clues for the player move
-    # for x in code:
-    #     if colors_map[x] in dummy_passcode:
-    #         if code.index(x) == passcode.index(colors_map[x]):
-    #             guess_flags[turn][pos] = 'R'
-    #         else:
-    #             guess_flags[turn][pos] = 'W'
-    #         pos += 1
-    #         dummy_passcode.remove(colors_map[x])
 
-    # random.shuffle(guess_flags[turn])
 
     # Check for win condition
     if guess_codes[turn] == passcode:
