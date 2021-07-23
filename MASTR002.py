@@ -11,7 +11,9 @@ try:
 except Exception as e:
     print("no module os")
 
-dottedline="--------------------------"
+dottedline = "--------------------------"
+
+
 def clear():
     try:
         system("cls")
@@ -35,7 +37,7 @@ def print_mastermind_board(passcode, guess_codes, guess_flags):
     maxi = len(guess_codes)
     i = maxi
     while i > 0:
-        i = i-1
+        i = i - 1
         # print(dottedline)
         print(guess_flags[i][0], guess_flags[i][1], guess_flags[i][2], guess_flags[i][3], end=" |")
 
@@ -45,6 +47,21 @@ def print_mastermind_board(passcode, guess_codes, guess_flags):
 
         print()
     print(dottedline)
+
+
+# Function to set the guess_flags
+def setGuessflags(guess_flags, turn, code, colors_map, passcode):
+    dummy_passcode = [x for x in passcode]
+    pos = 0
+    for x in code:
+        if colors_map[x] in dummy_passcode:
+            if code.index(x) == passcode.index(colors_map[x]):
+                guess_flags[turn][pos] = 'R'
+            else:
+                guess_flags[turn][pos] = 'W'
+            pos += 1
+            dummy_passcode.remove(colors_map[x])
+    return guess_flags
 
 
 # The Main function
@@ -131,25 +148,27 @@ while turn < chances:
         guess_codes[turn][i] = colors_map[code[i]]
 
         # Process to apply clues according to the player input
-    dummy_passcode = [x for x in passcode]
 
-    pos = 0
+    guess_flags = setGuessflags(guess_flags, turn, code, colors_map, passcode)
+    # dummy_passcode = [x for x in passcode]
+    #
+    # pos = 0
+    #
+    #
+    # # Loop to set up clues for the player move
+    # for x in code:
+    #     if colors_map[x] in dummy_passcode:
+    #         if code.index(x) == passcode.index(colors_map[x]):
+    #             guess_flags[turn][pos] = 'R'
+    #         else:
+    #             guess_flags[turn][pos] = 'W'
+    #         pos += 1
+    #         dummy_passcode.remove(colors_map[x])
 
-    # Loop to set up clues for the player move
-    for x in code:
-        if colors_map[x] in dummy_passcode:
-            if code.index(x) == passcode.index(colors_map[x]):
-                guess_flags[turn][pos] = 'R'
-            else:
-                guess_flags[turn][pos] = 'W'
-            pos += 1
-            dummy_passcode.remove(colors_map[x])
-
-    #random.shuffle(guess_flags[turn])
+    # random.shuffle(guess_flags[turn])
 
     # Check for win condition
-    if len(dummy_passcode)==0:
-    #if guess_codes[turn] == passcode:
+    if guess_codes[turn] == passcode:
         clear()
         print_mastermind_board(passcode, guess_codes, guess_flags)
         print("YOU WIN!!!!")
