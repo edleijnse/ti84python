@@ -58,13 +58,13 @@ def setGuessflags(guess_flags, turn, code, passcode):
            for codeitem in x:
                pp=0
                for passcodeitem in passcode:
+                   # check if passworditem is already processed
                    toprocess = True
                    for pitem in passcodeItemChecked:
                        if pitem == pp:
                            toprocess = False
                    if toprocess == True:
                       if (str(codeitem)==str(passcodeitem)):
-                       # check if passworditem already processed
                          if cc==pp:
                             guess_flags[turn][cc] = 'R'
                          else:
@@ -75,6 +75,7 @@ def setGuessflags(guess_flags, turn, code, passcode):
                cc +=1
         ii +=1
     return guess_flags
+
 
 # The Main function
 if __name__ == '__main__':
