@@ -51,19 +51,27 @@ def print_mastermind_board(passcode, guess_codes, guess_flags):
 
 def setGuessflags(guess_flags, turn, code, passcode):
     ii = 0
+    passcodeItemChecked=[]
     for x in code:
         if (ii==turn):
            cc=0
            for codeitem in x:
                pp=0
                for passcodeitem in passcode:
-                 if (str(codeitem)==str(passcodeitem)):
-                    if cc==pp:
-                       guess_flags[turn][cc] = 'R'
-                    else:
-                       guess_flags[turn][cc] = 'W'
-                    break
-                 pp +=1
+                   toprocess = True
+                   for pitem in passcodeItemChecked:
+                       if pitem == pp:
+                           toprocess = False
+                   if toprocess == True:
+                      if (str(codeitem)==str(passcodeitem)):
+                       # check if passworditem already processed
+                         if cc==pp:
+                            guess_flags[turn][cc] = 'R'
+                         else:
+                            guess_flags[turn][cc] = 'W'
+                         passcodeItemChecked.append(pp)
+                         break
+                   pp +=1
                cc +=1
         ii +=1
     return guess_flags
