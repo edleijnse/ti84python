@@ -23,6 +23,7 @@ def getEuroFromFile():
     try:
        file1 = open("eurostore.txt","r")
        storedeuro = file1.read()
+       storedeuro = int(storedeuro)
        file1.close()
     except Exception as e:
        storedeuro = .95
@@ -53,8 +54,8 @@ def saveeuro(ieuro):
 initeuro=geteuro()
 while True:
   try:
-    stopnow = input("continue currency calc (n)? ")
-    if stopnow == "n":
+    stopnow = input("continue currency calc (0=n)? ")
+    if stopnow == "0":
        break
     initeuro = euro2chf(initeuro)
     saveeuro(initeuro)
