@@ -54,8 +54,8 @@ def saveeuro(ieuro):
 initeuro=geteuro()
 while True:
   try:
-    stopnow = input("continue currency calc (0=n)? ")
-    if stopnow == "0":
+    stopnow = input("stop program (1=y)? ")
+    if stopnow == "1":
        break
     initeuro = euro2chf(initeuro)
     saveeuro(initeuro)
