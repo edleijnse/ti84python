@@ -1,4 +1,5 @@
 import unittest
+
 from MASTR002 import setGuessflags
 # https://stackoverflow.com/questions/52013612/python-unittest-does-not-run-tests
 
