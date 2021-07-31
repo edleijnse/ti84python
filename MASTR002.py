@@ -6,7 +6,6 @@ except Exception as e:
 
 import random
 
-dottedline = "--------------------------"
 
 
 def clear():
@@ -155,7 +154,8 @@ def playthegame():
 
         # Accepting the player input
         try:
-            code = list(map(int, input("Enter choice (.) = ").split(".")))
+            mychoice = input("Enter choice (.) = ").split(".")
+            code = list(map(int,mychoice))
         except ValueError:
             clear()
             print("\tWrong choice!! Try again!!")
@@ -202,13 +202,16 @@ def playthegame():
         print_mastermind_board(passcode, guess_codes, guess_flags)
         print("YOU LOSE!!!")
 
-
-goon = True
-while goon == True:
-    playthegame()
-    askgoon = str(input("next game enter 1: "))
-    if (askgoon=="1"):
-        goon=True
-    else:
-        goon=False
-print ("bye for now!")
+def main():
+   dottedline = "--------------------------"
+   goon = True
+   while goon == True:
+      playthegame()
+      askgoon = str(input("next game enter 1: "))
+      if (askgoon=="1"):
+           goon=True
+      else:
+          goon=False
+      print ("bye for now!")
+if __name__ == "__main__":
+    main()      
