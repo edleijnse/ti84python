@@ -1,2 +1,3 @@
 language = "python3"
-run="pytest testrunner.py "
+#run="pytest testrunner.py "
+run="python MASTR002.py"
