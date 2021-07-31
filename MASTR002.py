@@ -1,9 +1,11 @@
 # https://www.askpython.com/python/examples/create-mastermind-game-in-python
 try:
     from ti_system import *
+    ti84=True
 except Exception as e:
     print("no module ti_system")
-
+    ti84=False
+dottedline = "--------------------------"
 import random
 
 
@@ -203,7 +205,6 @@ def playthegame():
         print("YOU LOSE!!!")
 
 def main():
-   dottedline = "--------------------------"
    goon = True
    while goon == True:
       playthegame()
@@ -214,4 +215,8 @@ def main():
           goon=False
       print ("bye for now!")
 if __name__ == "__main__":
-    main()      
+    main()
+else:
+    if ti84==True:
+       main()
+
