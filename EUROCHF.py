@@ -13,10 +13,10 @@ def euro2chf(initeuro):
 
   print("euro: " + '{:.2f}'.format(euro))
   print("")
-  eurocount=float(input("count "))
-  print("euro count: ", eurocount)
+  eurocount=float(input("amount euros "))
+  print("amount euros: ", eurocount)
   chf=euro*eurocount
-  print ("CHF: " + '{:.2f}'.format(chf))
+  print ("costs in CHF: " + '{:.2f}'.format(chf))
   return neweuro
 
 def getEuroFromFile():
